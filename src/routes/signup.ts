@@ -4,7 +4,7 @@ import signupUser from '../signupUser'
 
 const router: express.Router = express.Router()
 
-const verifySignupRequest = (body: any) => {
+const verifyBody = (body: any) => {
     return typeof body.username == "string" &&  typeof body.password == "string" && body.username && body.password
 }
 
@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', async (req: any, res: any) => {
-    var isVerified = verifySignupRequest(req.body);
+    var isVerified = verifyBody(req.body);
     if (isVerified) {
         const username = req.body.username
         const password = req.body.password
