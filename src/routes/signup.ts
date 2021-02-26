@@ -4,11 +4,6 @@ import signupUser from '../signupUser'
 
 const router: express.Router = express.Router()
 
-const SignupRequestBodySchema = {
-    "username": "",
-    "password": ""
-}
-
 const verifySignupRequest = (body: any) => {
     return typeof body.username == "string" &&  typeof body.password == "string" && body.username && body.password
 }
