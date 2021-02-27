@@ -1,0 +1,26 @@
+import express from 'express'
+
+const router: express.Router = express.Router()
+
+const isUserLoggedIn = (req: any, res: any, next: any) => {
+    if (req.session.user) {
+        next()
+    } else {
+        res.redirect('/')
+    }
+}
+
+router.delete('/', isUserLoggedIn, (req, res) => {
+    req.session.destroy((error: Error) => {
+        if (error) {
+            res.status(400)
+            res.json({"message": "Internal server error. Please contact server administrators to resolve the issue."})
+            throw error
+        } else {
+            res.status(200)
+            res.json({"message": "Successfully logged out."})
+        }
+    })
+})
+
+export default router
