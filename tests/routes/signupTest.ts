@@ -1,0 +1,21 @@
+import chai, { expect } from 'chai'
+import chaiHttp from 'chai-http'
+import server from '../../src/server'
+
+chai.should()
+chai.use(chaiHttp)
+
+describe('Signup route API', () => {
+    describe('GET /signup', () => {
+        it('It should return an object with a new user signup message.', (done) => {
+            chai.request(server)
+                .get("/signup")
+                .end((error, res) => {
+                    if (error) throw error;
+                    res.should.have.status(200);
+                    expect(res.body).to.deep.equal({"message": "Send a POST request to this route with a username and password to signup."})
+                    done()
+                })
+        })
+    })
+})
