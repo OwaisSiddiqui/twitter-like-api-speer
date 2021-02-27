@@ -1,7 +1,7 @@
 import express from 'express'
 
-import isUsernameAvailable from '../util/isUsernameAvailable'
-import loginUser from '../util/loginUser'
+import isUsernameAvailable from '../utils/isUsernameAvailable'
+import loginUser from '../utils/loginUser'
 
 const router: express.Router = express.Router()
 
@@ -55,6 +55,11 @@ router.post('/', isUserLoggedIn, async (req, res) => {
     } else {
         res.redirect('/')
     }
+})
+
+router.all('/', (req, res) => {
+    res.set('Allow', Object.keys({'GET': true, 'HEAD': true, 'POST': true}).join(', '));
+    res.status(405).send({"message": req.method + " method not allowed."})
 })
 
 export default router

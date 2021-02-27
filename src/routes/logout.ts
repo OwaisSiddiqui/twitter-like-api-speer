@@ -10,6 +10,10 @@ const isUserLoggedIn = (req: any, res: any, next: any) => {
     }
 }
 
+router.get('/', isUserLoggedIn, (req, res) => {
+    res.json({"message": "Send a DELETE request to this route to logout."})
+})
+
 router.delete('/', isUserLoggedIn, (req, res) => {
     req.session.destroy((error: Error) => {
         if (error) {
@@ -21,6 +25,11 @@ router.delete('/', isUserLoggedIn, (req, res) => {
             res.json({"message": "Successfully logged out."})
         }
     })
+})
+
+router.all('/', (req, res) => {
+    res.set('Allow', Object.keys({'GET': true, 'HEAD': true, 'DELETE': true}).join(', '));
+    res.status(405).send({"message": req.method + " method not allowed."})
 })
 
 export default router

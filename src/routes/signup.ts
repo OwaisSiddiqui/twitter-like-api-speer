@@ -1,6 +1,6 @@
 import express from 'express'
-import isUsernameAvailable from '../util/isUsernameAvailable'
-import signupUser from '../util/signupUser'
+import isUsernameAvailable from '../utils/isUsernameAvailable'
+import signupUser from '../utils/signupUser'
 
 const router: express.Router = express.Router()
 
