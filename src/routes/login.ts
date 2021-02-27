@@ -5,15 +5,14 @@ import loginUser from '../util/loginUser'
 
 const router: express.Router = express.Router()
 
-// Override SessionData type to include new parameters
 declare module 'express-session' {
     export interface SessionData {
         user: { [key: string]: any };
     }
 }
 
-const verifyBody = (body: any) => {
-    return typeof body.username == "string" &&  typeof body.password == "string" && body.username && body.password
+const verifyBody = (body: any) => {    
+    return "username" in body && "password" in body && Object.keys(body).length == 2 && typeof body.username == "string" &&  typeof body.password == "string" && body.username && body.password
 }
 
 const isUserLoggedIn = (req: any, res: any, next: any) => {
@@ -25,7 +24,7 @@ const isUserLoggedIn = (req: any, res: any, next: any) => {
 }
 
 router.get('/', isUserLoggedIn, (req, res) => {
-    res.send("Send a POST request to this route with a username and password to login.")
+    res.json({"message": "Send a POST request to this route with a username and password to login."})
 })
 
 router.post('/', isUserLoggedIn, async (req, res) => {
@@ -43,15 +42,15 @@ router.post('/', isUserLoggedIn, async (req, res) => {
                     res.redirect('/')
                 } else {
                     res.status(401)
-                    res.send("The password for the username provided is incorrect.")
+                    res.json({"message": "The password for the username provided is incorrect."})
                 }
             } else {
                 res.status(409)
-                res.send("Username '" + username + "' does not exist.")
+                res.json({"message": "Username '" + username + "' does not exist."})
             }
         } else {
             res.status(422)
-            res.send("Either missing username, password parameters or parameters are not of type string.")
+            res.json({"message": "Either missing username, password parameters or there are extraneous parameters, or username, password parameters are not of type string."})
         }
     } else {
         res.redirect('/')
