@@ -5,7 +5,7 @@ Twitter -like REST API using Node.js for Speer Technologies assessment
 The server is hosted on localhost. The database is on a local MongoDB databse instance. The session management uses a local redis database.
 
 # Installation
-You need both MongoDB and Redis installed on your computer for the server to work.
+You need both MongoDB and Redis installed and running on your computer before starting the server for it to work.
 
 You also need a `.env` file with the following values defined:
 ```
