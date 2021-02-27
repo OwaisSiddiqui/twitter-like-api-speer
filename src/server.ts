@@ -6,6 +6,7 @@ import connectToDatabase from './util/mongodb'
 import signupRoute from './routes/signup'
 import loginRoute from './routes/login'
 import homeRoute from './routes/home'
+import logoutRoute from './routes/logout'
 
 const app: express.Express = express()
 const port: number = parseInt(process.env.PORT ? process.env.PORT : "3000")
@@ -43,12 +44,13 @@ app.use(express.json())
 app.use((error: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
     if (error instanceof SyntaxError) {
         res.status(400)
-        res.send("Invalid JSON body.")
+        res.json({"message": "Invalid JSON body."})
     }
 });
 app.use('/', homeRoute)
 app.use('/signup', signupRoute)
 app.use('/login', loginRoute)
+app.use('/logout', logoutRoute)
 
 connectToDatabase()
 
