@@ -2,11 +2,12 @@ require('dotenv').config()
 import express from 'express'
 import session from 'express-session'
 import redis from 'redis'
-import connectToDatabase from './util/mongodb'
+import connectToDatabase from './utils/mongodb'
 import signupRoute from './routes/signup'
 import loginRoute from './routes/login'
 import homeRoute from './routes/home'
 import logoutRoute from './routes/logout'
+import errorRoute from './routes/error'
 
 const app: express.Express = express()
 const port: number = parseInt(process.env.PORT ? process.env.PORT : "3000")
@@ -51,9 +52,12 @@ app.use('/', homeRoute)
 app.use('/signup', signupRoute)
 app.use('/login', loginRoute)
 app.use('/logout', logoutRoute)
+app.use('*', errorRoute)
 
 connectToDatabase()
 
 app.listen(port, host, () => {
     console.log("Connected to server.")
 })
+
+export default app
