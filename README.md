@@ -1,5 +1,5 @@
-# twitter-like-api
-Twitter -like REST API using Node.js
+# user-api
+User REST API using Node.js
 
 # Structure
 The server is hosted on localhost. The database is on a local MongoDB databse instance. The session management uses a local redis database.
@@ -11,15 +11,15 @@ You also need a `.env` file with the following values defined:
 ```
 PORT=3000
 MONGODB_CONNECTION_STRING=mongodb://localhost:27017
-DB=twitter
+DB=UsersAPI
 HOST=localhost
 REDIS_PORT=6379
 ```
 You can change them or use the ones above.
 
 ```
-git clone https://github.com/OwaisSiddiqui/twitter-like-api
-cd twitter-like-api
+git clone https://github.com/OwaisSiddiqui/user-api
+cd user-api
 npm i
 npm run dev
 ```
