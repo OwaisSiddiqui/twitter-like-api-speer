@@ -1,5 +1,5 @@
-# twitter-like-api-speer
-Twitter -like REST API using Node.js for Speer Technologies assessment
+# twitter-like-api
+Twitter -like REST API using Node.js
 
 # Structure
 The server is hosted on localhost. The database is on a local MongoDB databse instance. The session management uses a local redis database.
@@ -18,8 +18,8 @@ REDIS_PORT=6379
 You can change them or use the ones above.
 
 ```
-git clone https://github.com/OwaisSiddiqui/twitter-like-api-speer
-cd twitter-like-api-speer
+git clone https://github.com/OwaisSiddiqui/twitter-like-api
+cd twitter-like-api
 npm i
 npm run dev
 ```
