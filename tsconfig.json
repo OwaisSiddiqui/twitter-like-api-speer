@@ -14,5 +14,9 @@
         "esModuleInterop": true,
         "resolveJsonModule": true,
         "skipLibCheck": true
-    }
+    },
+    "exclude": [
+        "tests/*",
+        "build"
+    ]
 }

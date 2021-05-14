@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "ts-node-dev src/server.ts",
     "start": "node build/server.js",
-    "test": "mocha -r ts-node/register tests/routes/*.ts --exit"
+    "test": "mocha -r ts-node/register tests/routes/*.ts --exit",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -24,8 +25,6 @@
   },
   "homepage": "https://github.com/OwaisSiddiqui/twitter-like-api-speer#readme",
   "dependencies": {
-    "@types/express-session": "^1.17.3",
-    "@types/redis": "^2.8.28",
     "bcrypt": "^5.0.1",
     "connect-redis": "^5.1.0",
     "express": "^4.17.1",
@@ -41,12 +40,14 @@
     "@types/mocha": "^8.2.1",
     "@types/mongodb": "^3.6.8",
     "@types/node": "^14.14.31",
+    "@types/express-session": "^1.17.3",
+    "@types/redis": "^2.8.28",
     "chai": "^4.3.0",
     "chai-http": "^4.3.0",
     "dotenv": "^8.2.0",
     "mocha": "^8.3.0",
     "ts-node": "^9.1.1",
     "ts-node-dev": "^1.1.6",
-    "typescript": "^4.2.2"
+    "typescript": "^4.2.4"
   }
 }
