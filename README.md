@@ -15,8 +15,8 @@ DB=UsersAPI
 HOST=localhost
 REDIS_PORT=6379
 ```
-You can change them or use the ones above.
-
+(you can change them or use the ones above).
+Then run the following commands to pull, build, and start the app:
 ```
 git clone https://github.com/OwaisSiddiqui/user-api
 cd user-api
