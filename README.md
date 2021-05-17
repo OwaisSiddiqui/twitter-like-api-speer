@@ -1,5 +1,5 @@
 # user-api
-User REST API using Node.js
+User REST API using Node.js with Express, MongoDB, and Redis
 
 # Structure
 The server is hosted on localhost. The database is on a local MongoDB databse instance. The session management uses a local redis database.
